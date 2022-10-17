@@ -1,0 +1,20 @@
+Mockup Dashboard:
+
+- Gambar polisi dan hashtag percuma lapor polisi 
+- Header (Percuma Lapor Polisi?)
+- Alasan kenapa pilih tagar tersebut
+    -> mengapa trending akhir2 ini (kasus sambo dan narkoba si teddy minahasa)
+    -> nggak viral nggak diproses
+    -> medsos makin banyak dipakai untuk pelaporan dan pembuktian
+    -> cantumkan semua sumber ilmiah (jurnal/website/twitter/google trend)
+- Tampilkan gambar google trend (5 tahun terakhir)
+    -> berikan alasan akhir2 ini makin bergejolak
+    -> mana daerah yang paling sering mencari kata kunci tersebut
+    -> kemungkinan mencari kata kunci tersebut
+- Tampilkan cuplikan berita dari youtube terkait (#percumalaporpolisi)
+- Analisis regresi untuk tahun 2021-2022 dari setiap data (jika memungkinkan)
+- Filter per provinsi, jika se-Indonesia tampilkan iframe Google Trend, jika provinsi di-hide saja
+- Jika se-indonesia, maka tampilkan berita-berita nasional, jika se-provinsi tampilkan berita-berita lokal terkenal (kalau bisa)
+- Buat table dan grafik garis dari setiap sumber data (BPS), khusus table buat selisih persen-nya saja lalu warnai hijau atau merah (naik atau turun) (lihat kenjee)
+- Setiap table/grafik salah satu diberi footnote terkait provinsi yang baru mekar dan cara mengisi data kosongnya berdasarkan provinsi induk sebelumnya
+- Kasih footer by Rihan Yosral 2022
