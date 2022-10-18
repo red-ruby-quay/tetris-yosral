@@ -8,7 +8,6 @@ import streamlit as st
 from datetime import datetime
 import time
 import streamlit.components.v1 as components
-import matplotlib.pyplot as plt
 
 
 #helper to convert times to seconds
@@ -59,20 +58,30 @@ prov_input = st.selectbox(
 
 def show_desc(prov_input):
     df_crime_clock, df_murder_year, df_crime_count, df_crime_solve, df_crime_risk = load_data(prov_input)
+    st.markdown("```*Catatan: khusus provinsi Sulawesi Barat, Kalimantan Utara dan Papua Barat, data tahun 2005 sampai tahun pemekaran provinsi baru diisi menggunakan data provinsi induk asal pemekaran```")
     if(prov_input == 'INDONESIA'):
         #MURDER YEAR
-        st.markdown("<h3 style='text-align: center; '>Jumlah Kasus Pembunuhan Per Satu Tahun Terakhir Se-Indonesia Pada 2011-2022</h3>", unsafe_allow_html=True)
+        st.markdown(f"<h3 style='text-align: center; '>Jumlah Kasus Pembunuhan Per Satu Tahun Terakhir Se-Indonesia Pada 2011-2020</h3>", unsafe_allow_html=True)
         fig1 = px.line(df_murder_year, markers=True, labels={"index": "Tahun", "value": "Jumlah (Orang)"})
         fig1.update_traces(textposition="bottom right")
         st.plotly_chart(fig1, use_container_width=True)
 
     # CRIME CLOCK
-    st.markdown("<h3 style='text-align: center; '>Selang Waktu Kejahatan</h3>", unsafe_allow_html=True)
+    st.markdown(f"<h3 style='text-align: center; '>Selang Waktu Kejahatan di {prov_input.lower().capitalize()} Tahun 2005-2020</h3>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: center; '>adalah selang waktu atau interval waktu terjadinya satu tindak kejahatan dengan kejahatan yang lain. Selang waktu kejadian kriminal dinyatakan dalam satuan waktu detik</p>", unsafe_allow_html=True)
     df_crime_clock = df_crime_clock.T
     fig2 = px.line(df_crime_clock, markers=True, labels={"index": "Tahun", "value": "Selang Waktu (Detik)"})
     fig2.update_traces(textposition="bottom right")
     st.plotly_chart(fig2, use_container_width=True)
+    st.markdown("<p style='text-align: justify; '>dapat terlihat bahwa untuk </p>", unsafe_allow_html=True)
+
+    # CRIME COUNT
+    st.markdown(f"<h3 style='text-align: center; '>Jumlah Tindak Pidana di {prov_input.lower().capitalize()} Tahun 2005-2020</h3>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; '>adalah selang waktu atau interval waktu terjadinya satu tindak kejahatan dengan kejahatan yang lain. Selang waktu kejadian kriminal dinyatakan dalam satuan waktu detik</p>", unsafe_allow_html=True)
+    df_crime_count = df_crime_count.T
+    fig3 = px.line(df_crime_count, markers=True, labels={"index": "Tahun", "value": "Jumlah Tindak Pidana"})
+    fig3.update_traces(textposition="bottom right")
+    st.plotly_chart(fig3, use_container_width=True)
     st.markdown("<p style='text-align: justify; '>dapat terlihat bahwa untuk </p>", unsafe_allow_html=True)
     
 
