@@ -1,6 +1,8 @@
 streamlit
+openpyxl
 numpy
 pandas
 plotly
 datetime
 time
+Pillow
