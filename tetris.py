@@ -1,3 +1,4 @@
+from cProfile import label
 from doctest import DONT_ACCEPT_TRUE_FOR_1
 import pandas as pd
 import numpy as np
@@ -7,6 +8,8 @@ import streamlit as st
 from datetime import datetime
 import time
 import streamlit.components.v1 as components
+import matplotlib.pyplot as plt
+
 
 #helper to convert times to seconds
 def get_sec(time_str):
@@ -23,10 +26,6 @@ def load_data(prov_input = 'INDONESIA'):
     df_crime_solve = pd.read_excel("Persentase Penyelesaian Tindak Pidana.xlsx", index_col = 0)
     df_crime_risk  = pd.read_excel("Risiko Penduduk Terkena Tindak Pidana (Per 100.000 Penduduk).xlsx", index_col = 0)
     if(prov_input != 'INDONESIA'):
-        # df_crime_clock = df_crime_clock.filter(items = [prov_input], axis = 0)
-        # df_crime_count = df_crime_count.filter(items = [prov_input], axis = 0)
-        # df_crime_solve = df_crime_solve.filter(items = [prov_input], axis = 0)
-        # df_crime_risk = df_crime_risk.filter(items = [prov_input], axis = 0)
         df_crime_clock = df_crime_clock.loc[prov_input]
         df_crime_count = df_crime_count.loc[prov_input]
         df_crime_solve = df_crime_solve.loc[prov_input]
@@ -60,10 +59,22 @@ prov_input = st.selectbox(
 
 def show_desc(prov_input):
     df_crime_clock, df_murder_year, df_crime_count, df_crime_solve, df_crime_risk = load_data(prov_input)
+    if(prov_input == 'INDONESIA'):
+        #MURDER YEAR
+        st.markdown("<h3 style='text-align: center; '>Jumlah Kasus Pembunuhan Per Satu Tahun Terakhir Se-Indonesia Pada 2011-2022</h3>", unsafe_allow_html=True)
+        fig1 = px.line(df_murder_year, markers=True, labels={"index": "Tahun", "value": "Jumlah (Orang)"})
+        fig1.update_traces(textposition="bottom right")
+        st.plotly_chart(fig1, use_container_width=True)
+
+    # CRIME CLOCK
     st.markdown("<h3 style='text-align: center; '>Selang Waktu Kejahatan</h3>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: center; '>adalah selang waktu atau interval waktu terjadinya satu tindak kejahatan dengan kejahatan yang lain. Selang waktu kejadian kriminal dinyatakan dalam satuan waktu detik</p>", unsafe_allow_html=True)
-    st.dataframe(df_crime_clock)
-# df_crime_clock
+    df_crime_clock = df_crime_clock.T
+    fig2 = px.line(df_crime_clock, markers=True, labels={"index": "Tahun", "value": "Selang Waktu (Detik)"})
+    fig2.update_traces(textposition="bottom right")
+    st.plotly_chart(fig2, use_container_width=True)
+    st.markdown("<p style='text-align: justify; '>dapat terlihat bahwa untuk </p>", unsafe_allow_html=True)
+    
 
 if(prov_input):
     show_desc(prov_input)

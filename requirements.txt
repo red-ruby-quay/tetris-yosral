@@ -4,5 +4,3 @@ numpy
 pandas
 plotly
 datetime
-time
-Pillow
