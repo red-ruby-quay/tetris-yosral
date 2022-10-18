@@ -77,11 +77,27 @@ def show_desc(prov_input):
 
     # CRIME COUNT
     st.markdown(f"<h3 style='text-align: center; '>Jumlah Tindak Pidana di {prov_input.lower().capitalize()} Tahun 2005-2020</h3>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; '>adalah selang waktu atau interval waktu terjadinya satu tindak kejahatan dengan kejahatan yang lain. Selang waktu kejadian kriminal dinyatakan dalam satuan waktu detik</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; '>aadalah peristiwa yang dilaporkan yaitu setiap peristiwa yang diterima kepolisian dari laporan masyarakat, atau peristiwa yang pelakunya tertangkap tangan oleh polisi.</p>", unsafe_allow_html=True)
     df_crime_count = df_crime_count.T
     fig3 = px.line(df_crime_count, markers=True, labels={"index": "Tahun", "value": "Jumlah Tindak Pidana"})
     fig3.update_traces(textposition="bottom right")
     st.plotly_chart(fig3, use_container_width=True)
+    st.markdown("<p style='text-align: justify; '>dapat terlihat bahwa untuk </p>", unsafe_allow_html=True)
+
+    # CRIME RISK
+    st.markdown(f"<h3 style='text-align: center; '>Risiko Penduduk {prov_input.lower().capitalize()} Terkena Tindak Pidana Tahun 2005-2020</h3>", unsafe_allow_html=True)
+    st.markdown(f"<p style='text-align: center; '>adalah jumlah kejahatan setahun dibagi dengan jumlah penduduk {prov_input.lower().capitalize()} di tahun tertentu dikalikan 100.000.</p>", unsafe_allow_html=True)
+    fig4 = px.line(df_crime_risk, markers=True, labels={"index": "Tahun", "value": "Penduduk Per 100.000"})
+    fig4.update_traces(textposition="bottom right")
+    st.plotly_chart(fig4, use_container_width=True)
+    st.markdown("<p style='text-align: justify; '>dapat terlihat bahwa untuk </p>", unsafe_allow_html=True)
+
+    #CRIME SOLVE
+    st.markdown(f"<h3 style='text-align: center; '>Persentase Penyelesaian Tindak Pidana di {prov_input.lower().capitalize()} Tahun 2005-2020</h3>", unsafe_allow_html=True)
+    st.markdown(f"<p style='text-align: center; '>merupakan perbandingan jumlah tindak kejahatan yang dapat diselesaikan oleh pihak kepolisian dengan tindak kejahatan yang dilaporkan pada kurun waktu tertentu di wilayah {prov_input.lower().capitalize()} dikalikan 100 persen.</p>", unsafe_allow_html=True)
+    fig5 = px.line(df_crime_solve, markers=True, labels={"index": "Tahun", "value": "Persentase"})
+    fig5.update_traces(textposition="bottom right")
+    st.plotly_chart(fig5, use_container_width=True)
     st.markdown("<p style='text-align: justify; '>dapat terlihat bahwa untuk </p>", unsafe_allow_html=True)
     
 
