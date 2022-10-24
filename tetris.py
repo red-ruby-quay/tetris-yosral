@@ -33,8 +33,8 @@ def load_data(prov_input = 'INDONESIA'):
         df_crime_risk = df_crime_risk.loc[prov_input]
     return df_crime_clock, df_murder_year, df_crime_count, df_crime_solve, df_crime_risk
 
-st.markdown("<h2 style='text-align: center; '>Percuma Lapor Polisi?</h2>", unsafe_allow_html=True)
-st.markdown("![Lambang POLRI](https://static.republika.co.id/uploads/images/inpicture_slide/logo_200625094047-486.jpg)")
+st.markdown('<h2 style="text-align: center;">Percuma Lapor Polisi?</h2>', unsafe_allow_html=True)
+st.markdown('<img src="https://static.republika.co.id/uploads/images/inpicture_slide/logo_200625094047-486.jpg" alt="Lambang POLRI" style="width:700px; height:400px; text-align:center;"><br/><br/>', unsafe_allow_html=True)
 st.markdown('<div style="text-align: justify;">Frasa atau tagar <b>#PercumaLaporPolisi</b> saat ini sering muncul dalam berbagai pemberitaan di media massa yang berkaitan dengan kasus yang menyandung internal kepolisian.<br><br>\n\n Berdasarkan data pencarian kata yang dihimpun Google Trend, ternyata frasa atau tagar ini sudah sering dipakai dalam 5 tahun terakhir [\(Keluh Warga Ramai #PercumaLaporPolisi\: Memang Percuma)](https://www.cnnindonesia.com/nasional/20211014165320-12-707927/keluh-warga-ramai-percumalaporpolisi-memang-percuma), namun kembali <b>booming</b> akhir-akhir ini, terutama di media sosial.\n\nFenomena <b>booming-phrase</b> tersebut kembali terjadi dikarenakan beberapa kasus internal polisi yang dinilai negatif oleh masyarakat, seperti [Kasus Pembunuhan oleh Ferdy Sambo](https://nasional.kompas.com/read/2022/09/07/11293841/kasus-ferdy-sambo-dan-siasat-kapolri-benahi-polri) dan yang paling terbaru adalah [Kasus Narkoba Teddy Minahasa](https://nasional.kompas.com/read/2022/10/15/15304311/pertaruhan-citra-polri-di-3-kasus-besar-teddy-minahasa-ferdy-sambo-dan)</div>', unsafe_allow_html=True)
 
 if(st.checkbox('Lihat Data Google Trend')):
@@ -114,13 +114,14 @@ def show_desc(prov_input):
     fig5.update_traces(textposition="bottom right")
     st.plotly_chart(fig5, use_container_width=True)
     # decompose_series(df_crime_solve, 'persentase penyelesaian tindak pidana', prov_input)
-    
 
 if(prov_input):
     show_desc(prov_input)
 
 st.markdown(f"<p style='text-align: justify; '>Berdasarkan jumlah, rate, ataupun proporsi dari setiap statistik yang ada, seperti jumlah kasus pembunuhan, jumlah tindak pidana, dan risiko pidana semakin meningkat. Ini menandakan bahwa perkembangan kinerja polisi dari tahun ke tahun justru cenderung menurun. Ditambah lagi selang waktu tindak kejahatan dan penyelesaian yang semakin turun, menandakan bahwa semakin cepat selang kejahatan berlangsung sedangkan penyelesaian yang dilakukan oleh POLRI justru secara mayoritas di setiap daerah malah cenderung semakin lama. </p>", unsafe_allow_html=True)
 st.markdown(f"<p style='text-align: justify; '>Jadi, wajar saja jika tagar <b>#percumalaporpolisi</b> kini semakin menggema, ditambah lagi pemberitaan kasus besar yang penyelesaiannya lama meskipun alur kronologinya sudah jelas bagi masyarakat awam sekalipun. Dari kesimpulan hasil data yang dipaparkan, kita hanya bisa berharap semoga POLRI bisa segera membenahi diri agar rakyat Indonesia tidak perlu menggemakan tagar <b>#percumalaporpolisi</b> lagi di media sosial. Bagaimana?.</p>", unsafe_allow_html=True)
+st.markdown('</br><footer><p>Sumber Data/Berita: </p><ol><li><a href="https://www.bps.go.id">Badan Pusat Statistik (Statistik Politik dan Keamanan Tahun 2005-2020)</a></li><li><a href="https://www.kompas.com">Kompas</a></li><li><a href="https://www.cnnindonesia.com">CNN Indonesia</a></li><li><a href="https://www.twitter.com">Twitter</a></li></ol></footer>', unsafe_allow_html=True)
+
 
 # tweets_df = pd.read_json('hasil_scrapping.json', lines=True)
 # st.dataframe(tweets_df)

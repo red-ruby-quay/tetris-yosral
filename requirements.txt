@@ -5,3 +5,7 @@ pandas
 plotly
 datetime
 statsmodels
+sklearn
+textblob
+re
+nltk
